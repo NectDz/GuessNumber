@@ -1,0 +1,110 @@
+# Kevin Granados 12/2/19
+
+import random
+import time
+
+# Stop Counter
+
+counter = 0
+
+def stop():
+  while True:
+    for i in range(counter):
+      break
+
+# Intro 
+
+def intro():
+  print(" - Welcome to Kevin's Random Number Guesser Game -")
+  print("                    .------..     ")
+  print("                 .' .'''.   `.  ") 
+  time.sleep(.1)
+  print("                /    \   \    `. ")
+  print("                \    '   |     | ")
+  time.sleep(.1)
+  print("                 `--'   /     /  ")
+  print("                      .'  ,-''   ")
+  time.sleep(.1)
+  print("                      |  /     ")  
+  print("                      | '    ")    
+  time.sleep(.1)
+  print("                      '-'  ")      
+  print("                     .--.  ")  
+  time.sleep(.1)    
+  print("                    /    \  ")     
+  print("                    \    / ")   
+  time.sleep(.1)   
+  print("                     `--'  ")
+
+# Main
+
+def main():
+  global counter
+  counter += 1
+  intro()
+  time.sleep(1)
+  while True:
+    start = input("Type 'Start' to begin: ")
+    start = start.upper()
+    if start == 'START':
+      game()
+    else :
+      print("\nI did not understand...\n")
+      time.sleep(1)
+
+# Numbers
+
+comp = ("1","2","3","4","5","6","7","8","9","10")
+
+# Game
+
+def game():
+  global counter
+  counter += 1
+  # First portion
+  number = random.choice(comp)
+  guess = ("")
+  # Second Portion
+  # While number is not equal to guess
+  while number != guess:
+    # User Guess
+    print("")
+    guess = input("Guess a number: ")
+    print("------------------------------------")
+    if guess < number:
+      time.sleep(.5)
+      # Too Low
+      print("You are low try a higher number try again")
+      # Too High
+    elif guess > number:
+      time.sleep(.5)
+      print("You are high try a lower number ")
+  time.sleep(1)
+  # Third Portion
+  print("You got it the number was " + number)
+  time.sleep(1)
+  print("")
+  restart()
+  
+# Restart
+
+def restart():
+  while True: 
+    restart = input("Type 'C' to continue\nType 'Q' to end the game\nEnter here:")
+    restart = restart.upper()
+    if restart == 'C':
+      time.sleep(1)
+      print("")
+      print("Restarting game...")
+      print("------------------------------------")
+      game()
+    elif restart == 'Q':
+      print("")
+      time.sleep(1)
+      print("Ending game...")
+      print("------------------------------------")
+      stop()
+
+# Main
+
+main()
